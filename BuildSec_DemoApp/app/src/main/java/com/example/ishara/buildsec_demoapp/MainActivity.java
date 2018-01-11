@@ -2,6 +2,7 @@ package com.example.ishara.buildsec_demoapp;
 
 import android.app.Fragment;
 import android.content.Intent;
+import android.hardware.Camera;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
@@ -18,11 +19,25 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.util.Log;
 
+import lk.ishara.buildsecure.core.BuildSecure;
 
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    @BuildSecure (enableDataBackup = false)
+    public String getSampleText(){
+        return "inside main activity";
+    }
+    public static Camera getCameraInstance(){
+        Camera c = null;
+        try {
+            c = Camera.open(); // attempt to get a Camera instance
+        }
+        catch (Exception e){
+            // Camera is not available (in use or does not exist)
+        }
+        return c; // returns null if camera is unavailable
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 //        super.onCreate(savedInstanceState);
@@ -80,8 +95,10 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
+            Log.d("onBackPressed", "if block for closeDrawer is executed");
         } else {
             super.onBackPressed();
+            Log.d("onBackPressed", "else block is executed");
         }
     }
 
@@ -173,6 +190,8 @@ public class MainActivity extends AppCompatActivity
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.content_frame, fragment);
             ft.commit();
+        } else {
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
