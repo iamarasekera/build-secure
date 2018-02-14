@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BuildSec_DemoApp.iml" filepath="$PROJECT_DIR$/BuildSec_DemoApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/buildSec-Anno/buildSec-Anno.iml" filepath="$PROJECT_DIR$/buildSec-Anno/buildSec-Anno.iml" />
+      <module fileurl="file://$PROJECT_DIR$/buildSec-Processor/buildSec-Processor.iml" filepath="$PROJECT_DIR$/buildSec-Processor/buildSec-Processor.iml" />
     </modules>
   </component>
 </project>
